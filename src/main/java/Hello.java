@@ -1,5 +1,5 @@
 public class Hello {
     public String ay(){
-        return "Hey";
+        return "Hey1";
     }
 }
