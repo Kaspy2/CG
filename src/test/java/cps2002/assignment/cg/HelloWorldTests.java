@@ -31,7 +31,7 @@ public class HelloWorldTests {
     @Test
     public void testAdd(){
         //Exercise
-        int res = helloWorld.add(1,1);
+        int res = helloWorld.add(1,2);
 
         //Verify
         assertEquals(2,res);

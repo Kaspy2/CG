@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1b70316-ded4-4fdf-aa49-8dd550d98e10" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cps2002-assignment.iml" afterPath="$PROJECT_DIR$/cps2002-assignment.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cps2002/assignment/cg/HelloWorld.java" afterPath="$PROJECT_DIR$/src/main/java/cps2002/assignment/cg/HelloWorld.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cps2002/assignment/cg/HelloWorldTests.java" afterPath="$PROJECT_DIR$/src/test/java/cps2002/assignment/cg/HelloWorldTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -17,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/cps2002_assignment$HelloWorldTests.coverage" NAME="HelloWorldTests Coverage Results" MODIFIED="1521056624564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/cps2002_assignment$HelloWorldTests.coverage" NAME="HelloWorldTests Coverage Results" MODIFIED="1521057234392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>cps2002.assignment.cg.*</FILTER>
     </SUITE>
   </component>
@@ -28,8 +24,8 @@
           <file leaf-file-name="HelloWorldTests.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/cps2002/assignment/cg/HelloWorldTests.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+                <state relative-caret-position="442">
+                  <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -320,7 +316,7 @@
       <option name="presentableId" value="Default" />
       <updated>1521052683036</updated>
       <workItem from="1521052686538" duration="101000" />
-      <workItem from="1521056578666" duration="525000" />
+      <workItem from="1521056578666" duration="787000" />
     </task>
     <servers />
   </component>
@@ -331,9 +327,12 @@
     <history-entry file="HelloWorldTests - 2018.03.14 at 20h 43m 46s.xml">
       <configuration name="HelloWorldTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="HelloWorldTests - 2018.03.14 at 20h 53m 55s.xml">
+      <configuration name="HelloWorldTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="626000" />
+    <option name="totallyTimeSpent" value="888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -388,14 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cps2002/assignment/cg/HelloWorldTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="36" column="28" lean-forward="true" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cps2002/assignment/cg/HelloWorld.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -406,6 +397,14 @@
             <element signature="e#160#161#0" expanded="true" />
             <element signature="e#186#187#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cps2002/assignment/cg/HelloWorldTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
