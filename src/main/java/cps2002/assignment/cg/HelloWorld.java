@@ -6,4 +6,8 @@ public class HelloWorld {
         return "Hello World";
     }
 
+    public int add(int a, int b){
+        return a+b;
+    }
+
 }

@@ -27,4 +27,13 @@ public class HelloWorldTests {
         //Verify
         assertEquals("Hello World", message);
     }
+
+    @Test
+    public void testAdd(){
+        //Exercise
+        int res = helloWorld.add(1,1);
+
+        //Verify
+        assertEquals(2,res);
+    }
 }
