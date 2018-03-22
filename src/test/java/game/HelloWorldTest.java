@@ -7,24 +7,30 @@ import static org.junit.Assert.*;
 
 public class HelloWorldTest {
 
-  private HelloWorld helloWorld;
+	private HelloWorld helloWorld;
 
-  @Before
-  public void setup() {
-    helloWorld = new HelloWorld();
-  }
+	@Before
+	public void setup() {
+		helloWorld = new HelloWorld();
+	}
 
-  @After
-  public void teardown() {
-    helloWorld = null;
-  }
+	@After
+	public void teardown() {
+		helloWorld = null;
+	}
 
-  @Test
-  public void testSimpleGetMessage() {
-    //Exercise
-    String message = helloWorld.getMessage();
+	@Test
+	public void testSimpleGetMessage() {
+		//Exercise
+		String message = helloWorld.getMessage();
 
-    //Verify
-    assertEquals("Hello World", message);
-  }
+		//Verify
+		assertEquals("Hello World", message);
+	}
+
+	@Test
+	public void testGetOne(){
+		assertEquals(1,helloWorld.getOne());
+	}
+
 }
