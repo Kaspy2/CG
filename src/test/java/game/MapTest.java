@@ -22,9 +22,9 @@ public class MapTest{
 	@Test
 	public void testMapInit(){
 		// Exercise
-		map.generate();
+		map.generateMap();
 		char tileType = map.getTileType(2,2);
-		
+
 		// Verify
 		assertEquals(' ',tileType);
 	}
