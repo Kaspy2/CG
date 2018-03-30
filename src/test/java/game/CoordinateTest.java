@@ -21,7 +21,7 @@ public class CoordinateTest{
 	@Test
 	public void testCoordinateX(){
 		// Exercise
-		int x = coordinate.x;
+		int x = coordinate.getX();
 
 		// Verify
 		assertEquals(0,x);
@@ -30,14 +30,14 @@ public class CoordinateTest{
 	@Test
 	public void testCoordinateY(){
 		// Exercise
-		int y = coordinate.y;
+		int y = coordinate.getY();
 
 		// Verify
 		assertEquals(0,y);
 	}
 
 	// this is to test coordinate inequality
-	// requires Coordinate's equals() method 
+	// requires Coordinate's equals() method
 	@Test
 	public void testCoordinateInequality(){
 		// Exercise
@@ -47,6 +47,6 @@ public class CoordinateTest{
 		assertNotEquals(not,coordinate);
 	}
 
-	
+
 
 }

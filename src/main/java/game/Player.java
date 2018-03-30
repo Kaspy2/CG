@@ -4,9 +4,9 @@ class Player{
     Coordinate coordinate;
 
     public Player(){
-        coordinate = new Coordinate();
+        coordinate = new Coordinate(0, 0);
     }
 
     public void move(char direction){}
-    public boolean setCoordinate(Coordinate coordinate){ return false; }
+    public boolean setCoordinate(Coordinate coordinate){ return true; }
 }

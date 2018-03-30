@@ -22,9 +22,9 @@ public class PlayerTest{
 	public void testPlayerSetCoordinates(){
 		// Exercise
 		Coordinate c = new Coordinate(0,0);
-		
+
 		// Verify
-		assertEquals(true,player.setCoordinates(c));
+		assertEquals(true,player.setCoordinate(c));
 	}
 
 }

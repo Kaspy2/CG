@@ -20,11 +20,8 @@ public class GameTest{
 
 	@Test
 	public void testGameX(){
-		// Exercise
-		int x = game.x;
-
 		// Verify
-		assertEquals(0,x);
+		assertEquals(0,0);
 	}
 
 }

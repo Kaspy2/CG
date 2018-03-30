@@ -12,5 +12,5 @@ public class Map{
     }
 
     public void generateMap(){}
-    public char getTileType(){ return ' '; }
+    public char getTileType(int x, int y){ return ' '; }
 }
