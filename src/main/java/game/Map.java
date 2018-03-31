@@ -9,13 +9,13 @@ public class Map {
 
     public Map(){
         this.size = 0;
-        this.map = new char[this.size][this.size];
         water_rate = 40;
     }
 
     public boolean setMapSize(int size){
         if(size >= 5 && size <= 50){
             this.size = size;
+            this.map = new char[this.size][this.size];
             return true;
         }
         return false;
@@ -38,7 +38,9 @@ public class Map {
             }
         }
 
-        map[rand.nextInt(size)][rand.nextInt(size)] = 't';
+        int treasure_x = rand.nextInt(size);
+        int treasure_y = rand.nextInt(size);
+        map[treasure_x][treasure_y] = 't';
     }
 
     public char getTileType(int x, int y){

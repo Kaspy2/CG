@@ -37,6 +37,7 @@ public class MapTest{
 	@Test
 	public void testMapGetTileType(){
 		// Exercise
+		map.setMapSize(50);
 		map.generateMap();
 		char tileType = map.getTileType(0,0);
 
