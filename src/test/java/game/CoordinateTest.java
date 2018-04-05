@@ -58,12 +58,12 @@ public class CoordinateTest{
 
 	@Test
 	public void testCoordinateInequalityNull(){
-		assertNotEquals(null,coordinate);
+		assertFalse(coordinate.equals(null));
 	}
 
 	@Test
 	public void testCoordinateInequalityUnassignable(){
-		assertNotEquals(1,coordinate);
+		assertFalse(coordinate.equals(1));
 	}
 	
 }
