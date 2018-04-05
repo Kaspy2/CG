@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="game.PlayerTest" time="0" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="game.PlayerTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_151\jre\bin"/>
@@ -66,5 +66,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase classname="game.PlayerTest" name="testPlayerMoveRight" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerMoveDown" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerMoveLeft" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerSetNegativeCoordinates" time="0"/>
   <testcase classname="game.PlayerTest" name="testPlayerSetCoordinates" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerMoveInvalidDirection" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerMoveUp" time="0"/>
+  <testcase classname="game.PlayerTest" name="testPlayerSetSameCoordinates" time="0"/>
 </testsuite>
