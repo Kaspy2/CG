@@ -10,7 +10,7 @@ public class Game{
     public Game(){
         turns = 0;
         players = new ArrayList<Player>();
-        map = new Map(0);
+        map = new Map();
     }
 
     public void setTurns(int turns){
