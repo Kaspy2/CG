@@ -36,5 +36,27 @@ public class Game{
     public static void main (String[] args){}
     public void startGame(){}
     public boolean setNumPlayers(int n){ return false; }
+
+    public String genInnerHTML(Coordinate playerPos, Map map) {
+        String html = "";
+        if(map!=null) {
+            html += "<div class = \"board\">";
+            int size = map.getSize();
+            
+
+            for (int x = 0; x < size; x++) {
+                for (int y = 0; y < size; y++) {
+
+
+
+
+                }
+            }
+            html += "</div>";
+        }
+        
+        return html;
+    }
+
     public void generateHTMLFiles(){}
 }
