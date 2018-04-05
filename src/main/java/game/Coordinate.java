@@ -16,4 +16,19 @@ class Coordinate{
     public int getY(){
         return this.y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!Coordinate.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final Coordinate other = (Coordinate) obj;
+        if (this.x != other.getX() || this.y != other.getY()) {
+            return false;
+        }
+        return true;
+    }
 }
