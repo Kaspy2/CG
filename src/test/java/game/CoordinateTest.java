@@ -46,5 +46,14 @@ public class CoordinateTest{
 		// Verify
 		assertNotEquals(not,coordinate);
 	}
+
+	@Test
+	public void testCoordinateEquality(){
+		// Exercise
+		Coordinate same = new Coordinate(0,0);
+
+		// Verify
+		assertEquals(same,coordinate);
+	}
 	
 }
