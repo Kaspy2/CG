@@ -22,7 +22,7 @@ class Player{
     	// else should be programmatically avoided
     	// else does not change coordinates since invalid move direction
     	else {
-    		System.out.println("Error: Wrong direction type!");
+    		// System.out.println("Error: Wrong direction type!");
     		// throw MoveException();
     	}
     }

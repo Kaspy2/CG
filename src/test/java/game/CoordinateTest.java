@@ -55,5 +55,15 @@ public class CoordinateTest{
 		// Verify
 		assertEquals(same,coordinate);
 	}
+
+	@Test
+	public void testCoordinateInequalityNull(){
+		assertNotEquals(null,coordinate);
+	}
+
+	@Test
+	public void testCoordinateInequalityUnassignable(){
+		assertNotEquals(1,coordinate);
+	}
 	
 }
