@@ -9,7 +9,7 @@ public class Map {
 
     public Map(){
         this.size = 0;
-        water_rate = 40;
+        water_rate = 30;
     }
 
     public boolean setMapSize(int size){

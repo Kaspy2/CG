@@ -2,6 +2,8 @@ package game;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.io.IOException;
+import java.io.File;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +32,8 @@ public class GameTest{
 	@Test
 	public void testGenHTMLNull(){
 		Coordinate pos = new Coordinate(0,0);
-		String html = game.genInnerHTML(pos,null);
+		game.setMap(null);
+		String html = game.genInnerHTML(pos);
 
 		assertEquals(html.length(), 0);
 	}
@@ -39,24 +42,38 @@ public class GameTest{
 	public void testGenHTMLPlayer(){
 		// check if player exists on map
 		Coordinate pos = new Coordinate(0,0);
-		String innerHTML = game.genInnerHTML(pos,map);
+		game.setMap(map);
+		String innerHTML = game.genInnerHTML(pos);
 
 		assertTrue(innerHTML.contains("<div class=\"player\"></div>"));
 	}
 
+	// @Test
+	// public void testGenHTMLPlayerStart(){
+	// 	// first get a valid grass tile
+	// 	Coordinate pos = new Coordinate(0,0);
+	// 	game.setMap(map);
+	// 	String innerHTML = game.genInnerHTML(pos);
+
+	// 	// initially player should be on a grass tile
+	// 	assertTrue(innerHTML.contains("<div class=\"grass\"><div class=\"player\"></div></div>"));
+	// }
+
 	@Test
-	public void testGenHTMLPlayerStart(){
+	public void testGenHTMLTreasure(){
 		Coordinate pos = new Coordinate(0,0);
-		String innerHTML = game.genInnerHTML(pos,map);
+		game.setMap(map);
+		String innerHTML = game.genInnerHTML(pos);
 
 		// initially player should be on a grass tile
-		assertTrue(innerHTML.contains("<div class=\"grass\"><div class=\"player\"></div></div>"));
+		assertTrue(innerHTML.contains("<div class=\"treasure\">"));
 	}
 
 	@Test
 	public void testHTMLMapSize(){
 		Coordinate pos = new Coordinate(0,0);
-		String innerHTML = game.genInnerHTML(pos,map);
+		game.setMap(map);
+		String innerHTML = game.genInnerHTML(pos);
 		Pattern pattern = Pattern.compile("grass|treasure|water|hidden");
 		Matcher matcher = pattern.matcher(innerHTML);
 
@@ -69,11 +86,58 @@ public class GameTest{
 		assertEquals(expected,counter);
 	}
 
+	@Test
+	public void testGenDivHidden(){
+		String ret = game.genDiv('h', false);
+		assertEquals(ret,"<div class=\"hidden\"></div>");
+	}
 
 	@Test
-	public void testGameX(){
-		// Verify
-		assertEquals(0,0);
+	public void testGenDivWater(){
+		String ret = game.genDiv('w', false);
+		assertEquals(ret,"<div class=\"water\"></div>");
+	}
+
+	@Test
+	public void testGenDivGrass(){
+		String ret = game.genDiv('g', false);
+		assertEquals(ret,"<div class=\"grass\"></div>");
+	}
+
+	@Test
+	public void testGenDivTreasure(){
+		String ret = game.genDiv('t', false);
+		assertEquals(ret,"<div class=\"treasure\"></div>");
+	}
+
+	@Test
+	public void testGenDivInvalid(){
+		String ret = game.genDiv('a', false);
+		assertEquals(ret,"");
+	}
+
+	@Test
+	public void testGenDivInvalidPlayer(){
+		String ret = game.genDiv('b', true);
+		assertEquals(ret,"");
+	}
+
+	@Test
+	public void testGenDivPlayer(){
+		String ret = game.genDiv('g', true);
+		assertEquals(ret,"<div class=\"grass\"><div class=\"player\"></div></div>");
+	}
+
+	@Test
+	public void testGenHTMLFiles() throws IOException{
+		Player p = new Player();
+		p.setCoordinate(new Coordinate(0,0));
+		game.players.add(p);
+		game.setMap(map);
+		game.generateHTMLFiles();
+		File file = new File("htmlouts/map_player_0.html");
+		assertTrue(file.exists());
+
 	}
 
 }
