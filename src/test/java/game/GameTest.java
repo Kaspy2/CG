@@ -133,7 +133,7 @@ public class GameTest{
 	}
 
 	@Test
-	public void testGenHTMLFilesX() throws IOException{
+	public void testGenHTMLFiles() throws IOException{
 		Player p = new Player(0,0);
 		game.players.add(p);
 		game.setMap(map);
