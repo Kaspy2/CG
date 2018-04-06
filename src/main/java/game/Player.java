@@ -27,7 +27,7 @@ class Player{
     	}
     }
 
-    public boolean setCoordinate(Coordinate coordinate){ 
+    public boolean setCoordinate(Coordinate coordinate){
     	// must always set to a different coordinate
     	if (this.coordinate == coordinate) {
     		return false;

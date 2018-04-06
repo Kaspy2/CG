@@ -11,7 +11,7 @@ public class MapTest{
 	// Map dimension constraints handled in Game
 	@Before
 	public void setup(){
-		map = new Map();
+		map = new Map(25);
 	}
 
 	@After
@@ -20,29 +20,22 @@ public class MapTest{
 	}
 
 	@Test
-    public void testMaxSizeMap(){
-        assertFalse(map.setMapSize(51));
-    }
-
-    @Test
-    public void testMinSizeMap(){
-        assertFalse(map.setMapSize(4));
-    }
-
-    @Test
-    public void testCorrectSizeMap(){
-	    assertTrue(map.setMapSize(25));
-    }
-
-	@Test
 	public void testMapGetTileType(){
 		// Exercise
-		map.setMapSize(50);
 		map.generateMap();
-		char tileType = map.getTileType(0,0);
+		char tileType;
+		int num_treasure = 0;
 
 		// Verify
-		assertTrue(tileType == 'g' || tileType == 'w' || tileType == 't');
+		for(int i = 0; i < 25; i++){
+			for(int j = 0; j < 25; j++){
+				tileType = map.getTileType(i,j);
+				assertTrue(tileType == 'g' || tileType == 'w' || tileType == 't');
+				if(tileType == 't'){
+					num_treasure = 1;
+				}
+			}
+		}
+		assertEquals(1, num_treasure);
 	}
-
 }

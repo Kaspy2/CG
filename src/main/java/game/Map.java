@@ -7,18 +7,9 @@ public class Map {
     private char[][] map;
     private static double water_rate;
 
-    public Map(){
-        this.size = 0;
+    public Map(int size){
+        this.size = size;
         water_rate = 40;
-    }
-
-    public boolean setMapSize(int size){
-        if(size >= 5 && size <= 50){
-            this.size = size;
-            this.map = new char[this.size][this.size];
-            return true;
-        }
-        return false;
     }
 
     public int getSize(){
@@ -27,6 +18,8 @@ public class Map {
 
     public void generateMap(){
         Random rand = new Random();
+
+        this.map = new char[this.size][this.size];
 
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
