@@ -41,7 +41,7 @@ public class Game{
     public void generateHTMLFiles() throws IOException {
         for (int i = 0; i < players.size(); i++){
             String html = "<html lang=\"en\"><body><link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\">";
-            html += genInnerHTML(players.get(i).getCoordinate());
+            html += genInnerHTML(players.get(i));
             html += "</body></html>";
 
             File f = new File("htmlouts/map_player_"+i+".html");
@@ -52,7 +52,8 @@ public class Game{
     }
 
     // code to generate the board
-    public String genInnerHTML(Coordinate playerPos) {
+    public String genInnerHTML(Player p) {
+        Coordinate playerPos = p.getCoordinate();
         String html = "";
         if(map!=null) {
             html += "<div class = \"board\">";
@@ -65,12 +66,16 @@ public class Game{
 
                 // fill row with contents of each column
                 for (int x = 0; x < size; x++) {
+                    // temp is current coordinate
                     temp = new Coordinate(x,y);
                     if (temp.equals(playerPos)) {
                         html += genDiv(map.getTileType(x,y), true);
                     }
-                    else {
+                    else if (p.visited(temp)){
                         html += genDiv(map.getTileType(x,y), false);
+                    }
+                    else {
+                        html += genDiv('h', false);
                     }
                     
                 }

@@ -31,9 +31,10 @@ public class GameTest{
 
 	@Test
 	public void testGenHTMLNull(){
-		Coordinate pos = new Coordinate(0,0);
+		Player p = new Player (0,0);
+		//Coordinate pos = new Coordinate(0,0);
 		game.setMap(null);
-		String html = game.genInnerHTML(pos);
+		String html = game.genInnerHTML(p);
 
 		assertEquals(html.length(), 0);
 	}
@@ -41,9 +42,10 @@ public class GameTest{
 	@Test
 	public void testGenHTMLPlayer(){
 		// check if player exists on map
-		Coordinate pos = new Coordinate(0,0);
+		Player p = new Player (0,0);
+		// Coordinate pos = new Coordinate(0,0);
 		game.setMap(map);
-		String innerHTML = game.genInnerHTML(pos);
+		String innerHTML = game.genInnerHTML(p);
 
 		assertTrue(innerHTML.contains("<div class=\"player\"></div>"));
 	}
@@ -61,19 +63,21 @@ public class GameTest{
 
 	@Test
 	public void testGenHTMLTreasure(){
-		Coordinate pos = new Coordinate(0,0);
+		Player p = new Player (0,0);
+		// Coordinate pos = new Coordinate(0,0);
 		game.setMap(map);
-		String innerHTML = game.genInnerHTML(pos);
+		String innerHTML = game.genInnerHTML(p);
 
 		// initially player should be on a grass tile
-		assertTrue(innerHTML.contains("<div class=\"treasure\">"));
+		assertTrue(innerHTML.contains("<div class=\"hidden\">"));
 	}
 
 	@Test
 	public void testHTMLMapSize(){
-		Coordinate pos = new Coordinate(0,0);
+		// Coordinate pos = new Coordinate(0,0);
+		Player p = new Player (0,0);
 		game.setMap(map);
-		String innerHTML = game.genInnerHTML(pos);
+		String innerHTML = game.genInnerHTML(p);
 		Pattern pattern = Pattern.compile("grass|treasure|water|hidden");
 		Matcher matcher = pattern.matcher(innerHTML);
 
@@ -129,12 +133,26 @@ public class GameTest{
 	}
 
 	@Test
-	public void testGenHTMLFiles() throws IOException{
-		Player p = new Player();
-		p.setCoordinate(new Coordinate(0,0));
+	public void testGenHTMLFilesX() throws IOException{
+		Player p = new Player(0,0);
 		game.players.add(p);
 		game.setMap(map);
 		game.generateHTMLFiles();
+		// if no exception is thrown, all good
+	}
+
+	@Test
+	public void testGenHTMLFilesPlayerMoved() throws IOException{
+		Player p = new Player(1,1);
+		p.move('u');
+		p.move('r');
+		p.move('d');
+		p.move('l');
+		game.players.add(p);
+		game.setMap(map);
+		game.generateHTMLFiles();
+		
+		assertEquals(new Coordinate(1,1), game.players.get(0).getCoordinate());
 		// if no exception is thrown, all good
 	}
 

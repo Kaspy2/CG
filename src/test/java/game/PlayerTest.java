@@ -10,7 +10,7 @@ public class PlayerTest{
 
 	@Before
 	public void setup(){
-		player = new Player();
+		player = new Player(0,0);
 	}
 
 	@After
@@ -89,6 +89,11 @@ public class PlayerTest{
 		player.move('a');
 
 		assertEquals(testCoord, player.getCoordinate());
+	}
+
+	@Test
+	public void testPlayerVisited(){
+		assertTrue(player.visited(new Coordinate(0,0)));
 	}
 
 }
