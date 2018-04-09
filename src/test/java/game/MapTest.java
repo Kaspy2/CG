@@ -38,4 +38,16 @@ public class MapTest{
 		}
 		assertEquals(1, num_treasure);
 	}
+
+	@Test
+	public void testGetTileTypeFail(){
+		map.generateMap();
+		assertEquals('f', map.getTileType(26, 15));
+	}
+
+	@Test
+	public void testGetTileTypePass(){
+		map.generateMap();
+		assertTrue(map.getTileType(22, 22) == 'g' || map.getTileType(22, 22) == 'w' || map.getTileType(22, 22) == 't');
+	}
 }

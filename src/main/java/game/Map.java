@@ -9,7 +9,7 @@ public class Map {
 
     public Map(int size){
         this.size = size;
-        water_rate = 40;
+        water_rate = 20;
     }
 
     public int getSize(){
@@ -37,6 +37,9 @@ public class Map {
     }
 
     public char getTileType(int x, int y){
-        return map[x][y];
+        if(x < this.size && y < this.size){
+            return map[x][y];
+        }
+        return 'f';
     }
 }
