@@ -165,6 +165,10 @@ public class Game{
     }
 
     public static void generateHTMLFiles() throws IOException {
+        File dir = new File("htmlouts");
+        if (!dir.exists()){
+            dir.mkdir();
+        }
         for (int i = 0; i < num_players; i++){
             String html = "<html lang=\"en\"><body><link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\">";
             html += genInnerHTML(players[i]);
