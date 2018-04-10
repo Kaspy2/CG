@@ -66,4 +66,8 @@ public class CoordinateTest{
 		assertFalse(coordinate.equals(1));
 	}
 	
+	@Test
+	public void testHashCode(){
+		assertEquals(0,coordinate.hashCode());
+	}
 }

@@ -31,4 +31,9 @@ class Coordinate{
         }
         return true;
     }
+
+    @Override
+    public int hashCode(){
+        return (this.x*100)+this.y;
+    }
 }

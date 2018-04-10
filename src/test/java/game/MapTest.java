@@ -19,6 +19,31 @@ public class MapTest{
 		map = null;
 	}
 
+
+	@Test
+	public void testGetAdjacentLength(){
+		Coordinate[] coords = map.getAdjacent(1,1);
+		assertEquals(4,coords.length);
+	}
+
+	@Test
+	public void testGetAdjacentLengthSide(){
+		Coordinate[] coords = map.getAdjacent(1,0);
+		assertEquals(3,coords.length);
+	}
+
+	@Test
+	public void testGetAdjacentLengthCorner(){
+		Coordinate[] coords = map.getAdjacent(0,0);
+		assertEquals(2,coords.length);
+	}
+
+	@Test
+	public void testGetAdjacentOutOfBounds(){
+		Coordinate[] coords = map.getAdjacent(25,25);
+		assertEquals(0,coords.length);
+	}
+
 	@Test
 	public void testMapGetTileType(){
 		// Exercise
@@ -32,7 +57,7 @@ public class MapTest{
 				tileType = map.getTileType(i,j);
 				assertTrue(tileType == 'g' || tileType == 'w' || tileType == 't');
 				if(tileType == 't'){
-					num_treasure = 1;
+					num_treasure += 1;
 				}
 			}
 		}
@@ -49,5 +74,19 @@ public class MapTest{
 	public void testGetTileTypePass(){
 		map.generateMap();
 		assertTrue(map.getTileType(22, 22) == 'g' || map.getTileType(22, 22) == 'w' || map.getTileType(22, 22) == 't');
+	}
+
+	@Test
+	public void testReachableTreasure(){
+		map.generateMap();
+		boolean reachable = map.reachableTreasure(0,0);
+		assertTrue(reachable==true || reachable==false);
+	}
+
+	@Test
+	public void testReachableTreasureOutOfBounds(){
+		map.generateMap();
+		boolean reachable = map.reachableTreasure(25,25);
+		assertFalse(reachable);
 	}
 }

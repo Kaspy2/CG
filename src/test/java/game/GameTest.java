@@ -285,10 +285,10 @@ public class GameTest{
 		game.setStartingPositions();
 
 		Player p = game.getPlayer(0);
-		p.move('u');
-		p.move('r');
-		p.move('d');
-		p.move('l');
+		p.move('u',map.getSize());
+		p.move('r',map.getSize());
+		p.move('d',map.getSize());
+		p.move('l',map.getSize());
 		game.setPlayer(0,p);
 
 		//game.players.add(p);

@@ -18,20 +18,24 @@ class Player{
         this(new Coordinate(x,y));
     }
 
-    public void move(char direction){
+    public boolean move(char direction, int mapSize){
     	int x = this.coordinate.getX();
     	int y = this.coordinate.getY();
 
     	if(direction == 'u') {
+            if(y>=(mapSize-1)) return false;
             y += 1;
     	}
     	else if (direction == 'd') {
+            if(y<=0) return false;
             y -= 1;
     	}
     	else if (direction == 'l') {
+            if(x<=0) return false;
             x -= 1;
     	}
     	else if (direction == 'r') {
+            if(x>=(mapSize-1)) return false;
             x += 1;
     	}
     	// else should be programmatically avoided
@@ -39,11 +43,13 @@ class Player{
     	else {
     		// System.out.println("Error: Wrong direction type!");
     		// throw MoveException();
+            return false;
     	}
 
         Coordinate newpos = new Coordinate(x,y);
         this.setCoordinate(newpos);
         visited.add(newpos);
+        return true;
     }
 
     public boolean setCoordinate(Coordinate coordinate){

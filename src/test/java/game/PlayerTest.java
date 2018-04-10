@@ -50,7 +50,7 @@ public class PlayerTest{
 	public void testPlayerMoveUp(){
 		player.setCoordinate(new Coordinate(1,1));
 		Coordinate testCoord = new Coordinate(1,2);
-		player.move('u');
+		boolean a = player.move('u',20);
 
 		assertEquals(testCoord, player.getCoordinate());
 	}
@@ -59,7 +59,7 @@ public class PlayerTest{
 	public void testPlayerMoveDown(){
 		player.setCoordinate(new Coordinate(1,1));
 		Coordinate testCoord = new Coordinate(1,0);
-		player.move('d');
+		boolean a = player.move('d',20);
 
 		assertEquals(testCoord, player.getCoordinate());
 	}
@@ -68,7 +68,7 @@ public class PlayerTest{
 	public void testPlayerMoveLeft(){
 		player.setCoordinate(new Coordinate(1,1));
 		Coordinate testCoord = new Coordinate(0,1);
-		player.move('l');
+		boolean a = player.move('l',20);
 
 		assertEquals(testCoord, player.getCoordinate());
 	}
@@ -77,7 +77,7 @@ public class PlayerTest{
 	public void testPlayerMoveRight(){
 		player.setCoordinate(new Coordinate(1,1));
 		Coordinate testCoord = new Coordinate(2,1);
-		player.move('r');
+		boolean a = player.move('r',20);
 
 		assertEquals(testCoord, player.getCoordinate());
 	}
@@ -86,10 +86,44 @@ public class PlayerTest{
 	public void testPlayerMoveInvalidDirection(){
 		Coordinate testCoord = new Coordinate(1,2);
 		player.setCoordinate(testCoord);
-		player.move('a');
+		boolean a = player.move('a',20);
 
 		assertEquals(testCoord, player.getCoordinate());
 	}
+
+	@Test
+	public void testPlayerMoveInvalidUp(){
+		Coordinate testCoord = new Coordinate(2,2);
+		player.setCoordinate(testCoord);
+
+		assertFalse(player.move('u',3));
+	}
+
+	@Test
+	public void testPlayerMoveInvalidDown(){
+		Coordinate testCoord = new Coordinate(2,0);
+		player.setCoordinate(testCoord);
+
+		assertFalse(player.move('d',3));
+	}
+
+	@Test
+	public void testPlayerMoveInvalidLeft(){
+		Coordinate testCoord = new Coordinate(0,2);
+		player.setCoordinate(testCoord);
+
+		assertFalse(player.move('l',3));
+	}
+
+	@Test
+	public void testPlayerMoveInvalidRight(){
+		Coordinate testCoord = new Coordinate(2,1);
+		player.setCoordinate(testCoord);
+
+		assertFalse(player.move('r',3));
+	}
+
+
 
 	@Test
 	public void testPlayerVisited(){

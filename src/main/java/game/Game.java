@@ -23,6 +23,7 @@ public class Game{
 
         try {
             generateHTMLFiles();
+            generateHTMLFileRevealed();
         } catch (IOException e){
             System.out.println(e.toString());
         }
@@ -117,7 +118,7 @@ public class Game{
                 tmp_x = rand.nextInt(getMapSize());
                 tmp_y = rand.nextInt(getMapSize());
                 char tmp_tile_type = map.getTileType(tmp_x, tmp_y);
-                if(tmp_tile_type != 't' && tmp_tile_type != 'w'){
+                if(tmp_tile_type != 't' && tmp_tile_type != 'w' && map.reachableTreasure(tmp_x,tmp_y)){
                     break;
                 }
             }
@@ -142,10 +143,9 @@ public class Game{
                 do {
                     System.out.print("Player number " + (i+1) + " enter your move: ");
                     tmp_dir = sc.next().charAt(0);
-                } while (tmp_dir != 'u' && tmp_dir != 'd' && tmp_dir != 'l' && tmp_dir != 'r');
+                } while (tmp_dir != 'u' && tmp_dir != 'd' && tmp_dir != 'l' && tmp_dir != 'r' || !players[i].move(tmp_dir, map.getSize()));
 
-                players[i].move(tmp_dir);
-
+                
                 char tmp_tile_type = getMap().getTileType(players[i].getCoordinate().getX(), players[i].getCoordinate().getY());
 
                 if (tmp_tile_type == 't'){
@@ -243,5 +243,51 @@ public class Game{
 
         s+="</div>";
         return s;
+    }
+
+
+
+
+
+
+    public static void generateHTMLFileRevealed() throws IOException {
+        String html = "<html lang=\"en\"><body><link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\">";
+        html += genInnerHTMLRevealed();
+        html += "</body></html>";
+
+        File f = new File("htmlouts/map_full.html");
+        BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+        bw.write(html);
+        bw.close();
+    }
+
+    // code to generate the board
+    public static String genInnerHTMLRevealed() {
+        String html = "";
+        if(map!=null) {
+            html += "<div class = \"board\">";
+            int size = map.getSize();
+            Coordinate temp;
+
+            for (int y = size-1; y >= 0; y--) {
+                // new row
+                html += "<div class=\"row\">";
+
+                // fill row with contents of each column
+                for (int x = 0; x < size; x++) {
+                    // temp is current coordinate
+                    temp = new Coordinate(x,y);
+                    html += genDiv(map.getTileType(x,y), false);
+                }
+
+                // end row
+                html += "</div>";
+            }
+
+            // end board
+            html += "</div>";
+        }
+
+        return html;
     }
 }
