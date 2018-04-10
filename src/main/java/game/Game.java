@@ -66,34 +66,22 @@ public class Game{
 
     public static void initGame(){
         Scanner sc = new Scanner(System.in);
-
-        try {
-            do{
+        do{
+            System.out.print("Number of players: ");
+            while (!sc.hasNextInt()){
                 System.out.print("Number of players: ");
-                while(!sc.hasNextInt()){
-                    System.out.print("Number of players: ");
-                    sc.next();
-                }
-                if(setNumPlayers(sc.nextInt())){
-                    break;
-                }
-            }while(true);
+                sc.next();
+            }
+        } while(!setNumPlayers(sc.nextInt()));
 
 
-            do{
+        do{
+            System.out.print("Map size: ");
+            while (!sc.hasNextInt()){
                 System.out.print("Map size: ");
-                while(!sc.hasNextInt()){
-                    System.out.print("Map size: ");
-                    sc.next();
-                }
-                if(setMapSize(sc.nextInt())){
-                    break;
-                }
-            }while(true);
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+                sc.next();
+            }
+        } while(!setMapSize(sc.nextInt()));
     }
 
     public static boolean setNumPlayers(int n_p){

@@ -96,4 +96,16 @@ public class PlayerTest{
 		assertTrue(player.visited(new Coordinate(0,0)));
 	}
 
+	@Test
+	public void testPlayerGetStartCoord(){
+		Coordinate c = new Coordinate(0,0);
+		assertEquals(c,player.getStartCoord());
+	}
+
+	@Test
+	public void testPlayerGetStartCoordIneq(){
+		Coordinate c = new Coordinate(1,1);
+		assertNotEquals(c,player.getStartCoord());
+	}
+
 }

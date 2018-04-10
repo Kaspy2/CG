@@ -31,6 +31,18 @@ public class GameTest{
 	}
 
 	@Test
+	public void testGetPlayer(){
+		game.setNumPlayers(2);
+		assertEquals(null,game.getPlayer(2));
+	}
+
+	@Test
+	public void testSetPlayer(){
+		game.setNumPlayers(2);
+		assertEquals(false,game.setPlayer(2,null));
+	}
+
+	@Test
 	public void testSetNumPlayersMin(){
 		assertFalse(game.setNumPlayers(1));
 	}
@@ -92,6 +104,36 @@ public class GameTest{
 	public void testGetMap(){
 		game.setMap(map);
 		assertEquals(map, game.getMap());
+	}
+
+	@Test
+	public void testInitGame() {
+		String goodInput = "2\n20\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGamePlayers() {
+		String goodInput = "a\n9\n8\n20\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameMapSize() {
+		String goodInput = "8\nxyz\n50\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
 	}
 
 	// @Test
