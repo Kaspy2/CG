@@ -1,5 +1,3 @@
-package game;
-
 import java.util.*;
 
 public class Map {
@@ -95,7 +93,7 @@ public class Map {
     public boolean reachableTreasure(int x, int y){
         if (x<this.size && y<this.size){
             Coordinate goal = new Coordinate(x,y);
-            
+
             HashSet<Coordinate> flooded = new HashSet<Coordinate>();
 
             // start from treasure
@@ -110,7 +108,7 @@ public class Map {
                 if(current.equals(goal)){
                     return true;
                 }
-                
+
                 Coordinate [] adj = getAdjacent(current.getX(),current.getY());
                 for (Coordinate c: adj){
                     if (getTileType(c.getX(),c.getY())=='g' && !flooded.contains(c)){

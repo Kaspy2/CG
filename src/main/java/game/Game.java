@@ -1,5 +1,3 @@
-package game;
-
 import java.util.*;
 import java.io.*;
 
@@ -145,7 +143,7 @@ public class Game{
                     tmp_dir = sc.next().charAt(0);
                 } while (tmp_dir != 'u' && tmp_dir != 'd' && tmp_dir != 'l' && tmp_dir != 'r' || !players[i].move(tmp_dir, map.getSize()));
 
-                
+
                 char tmp_tile_type = getMap().getTileType(players[i].getCoordinate().getX(), players[i].getCoordinate().getY());
 
                 if (tmp_tile_type == 't'){
