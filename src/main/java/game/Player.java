@@ -2,7 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
-class Player{
+public class Player{
     private Coordinate startCoord;
     private ArrayList<Coordinate> visited;
     private Coordinate coordinate;

@@ -5,7 +5,7 @@ import java.util.*;
 public class Map {
     private int size;
     private char[][] map;
-    private static double water_rate;
+    protected double water_rate;
     private Coordinate treasure;
 
     public Map(int size){
