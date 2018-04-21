@@ -1,2 +1,4 @@
 target
-htmlouts
+**/.DS_Store
+**/htmlouts/*.html
+**/*.class
