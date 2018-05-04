@@ -27,7 +27,7 @@ public class Game{
 
         try {
             generateHTMLFiles();
-            generateHTMLFileRevealed();
+            //generateHTMLFileRevealed();
         } catch (IOException e){
             System.out.println(e.toString());
         }
@@ -259,7 +259,8 @@ public class Game{
         s+="</div>";
         return s;
     }
-
+    
+    /*
     public static void generateHTMLFileRevealed() throws IOException {
         String html = "<html lang=\"en\"><body><link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\">";
         html += genInnerHTMLRevealed();
@@ -299,5 +300,5 @@ public class Game{
         }
 
         return html;
-    }
+    }*/
 }
