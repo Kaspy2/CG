@@ -10,7 +10,7 @@ public class Map {
 
     public Map(int size){
         this.size = size;
-        water_rate = 30;
+        water_rate = 30/100;
     }
 
     public int getSize(){
@@ -22,13 +22,18 @@ public class Map {
 
         this.map = new char[this.size][this.size];
 
+        double tiles_remaining = size*size;
+        double water_tiles_remaining = Math.floor(water_rate*tiles_remaining);
+
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-                if((rand.nextInt(100) + 1) < water_rate){
+                if(rand.nextDouble() < water_tiles_remaining/tiles_remaining){
                     map[i][j] = 'w';
+                    water_tiles_remaining--;
                 } else {
                     map[i][j] = 'g';
                 }
+                tiles_remaining--;
             }
         }
 

@@ -6,6 +6,6 @@ public class HazardousMap extends Map {
     HazardousMap(int size){
         super(size);
         Random rand = new Random();
-        water_rate = rand.nextInt(10) + 25;
+        water_rate = (rand.nextInt(10) + 25)/100;
     }
 }
