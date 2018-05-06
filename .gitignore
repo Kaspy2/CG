@@ -1,2 +1,6 @@
 target
+**/.DS_Store
+**/htmlouts/*.html
+**/*.class
 htmlouts
+.DS_Store

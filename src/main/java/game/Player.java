@@ -2,10 +2,10 @@ package game;
 
 import java.util.ArrayList;
 
-class Player {
-    protected Coordinate startCoord;
+public class Player{
+    private Coordinate startCoord;
     protected ArrayList<Coordinate> visited;
-    protected Coordinate coordinate;
+    private Coordinate coordinate;
 
     public Player(Coordinate coord) {
         this.coordinate = coord;

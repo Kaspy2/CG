@@ -108,7 +108,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGame() {
-		String goodInput = "2\n20\nn\n";
+		String goodInput = "2\n20\ns\nn\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -118,7 +118,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGamePlayers() {
-		String goodInput = "a\n9\n8\n20\nn\n";
+		String goodInput = "a\n9\n8\n20\na\ns\nn\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -128,7 +128,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGameMapSize() {
-		String goodInput = "8\nxyz\n50\nn\n";
+		String goodInput = "8\nxyz\n50\nh\nn\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -138,7 +138,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGameCollabMode() {
-		String goodInput = "8\n10\nawtf\nbxz\ny\n3\n";
+		String goodInput = "8\n10\nh\nawtf\nbxz\ny\n3\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -148,38 +148,13 @@ public class GameTest{
 
 	@Test
 	public void testInitGameNumTeams() {
-		String goodInput = "8\n10\ny\n123\n3\n";
+		String goodInput = "8\n10\nh\ny\n123\n3\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
 		System.setIn(System.in);
 		assertEquals(0,bais.available());
 	}
-
-	// @Test
-	// public void testInitGame(){
-	// 	ByteArrayOutputStream out = new ByteArrayOutputStream();
-	// 	ByteArrayInputStream in1 = new ByteArrayInputStream("a".getBytes());
-	//
-	// 	System.setIn(new ByteArrayInputStream("a".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("Number of players: ", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("1".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("ERROR: incorrect number of players. (MIN: 2 | MAX: 8)", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("2".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("Map size: ", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("10".getBytes()));
-	//
-	// 	game.initGame();
-	//
-	// 	System.setOut(System.out);
-	// 	System.setIn(System.in);
-	// }
 
 	@Test
 	public void testGenHTMLNull(){
