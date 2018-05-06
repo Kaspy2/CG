@@ -2,11 +2,14 @@ package game;
 
 import java.util.*;
 import java.io.*;
+import java.lang.Character;
 
 public class Game{
     private static int num_players;
     private static Player[] players;
 	private static int map_size;
+    private static char map_type;
+    private static MapCreator map_creator;
     private static Map map;
     private static ArrayList<Integer> winners;
 
@@ -16,14 +19,15 @@ public class Game{
 
         initGame();
 
-        map = new Map(map_size);
+        map_creator = new MapCreator(map_type, map_size);
+        map = map_creator.getMap();
         map.generateMap();
 
         setStartingPositions();
 
         try {
             generateHTMLFiles();
-            // generateHTMLFileRevealed();
+            //generateHTMLFileRevealed();
         } catch (IOException e){
             System.out.println(e.toString());
         }
@@ -83,6 +87,13 @@ public class Game{
                 sc.next();
             }
         } while(!setMapSize(sc.nextInt()));
+
+        System.out.print("Map type ((s)afe | (h)azardous): ");
+        while (!sc.hasNext("s") && !sc.hasNext("h") && !sc.hasNext("S") && !sc.hasNext("H")) {
+            System.out.print("Map type ((S)afe | (H)azardous): ");
+            map_type = sc.next().charAt(0);
+        }
+        map_type = sc.next().charAt(0);
     }
 
     public static boolean setNumPlayers(int n_p){
@@ -145,7 +156,7 @@ public class Game{
                     tmp_dir = sc.next().charAt(0);
                 } while (tmp_dir != 'u' && tmp_dir != 'd' && tmp_dir != 'l' && tmp_dir != 'r' || !players[i].move(tmp_dir, map.getSize()));
 
-                
+
                 char tmp_tile_type = getMap().getTileType(players[i].getCoordinate().getX(), players[i].getCoordinate().getY());
 
                 if (tmp_tile_type == 't'){
@@ -248,7 +259,7 @@ public class Game{
         s+="</div>";
         return s;
     }
-
+    
     /*
     public static void generateHTMLFileRevealed() throws IOException {
         String html = "<html lang=\"en\"><body><link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\">";
@@ -289,6 +300,5 @@ public class Game{
         }
 
         return html;
-    }
-    */
+    }*/
 }
