@@ -108,7 +108,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGame() {
-		String goodInput = "2\n20\n";
+		String goodInput = "2\n20\nn\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -118,7 +118,7 @@ public class GameTest{
 
 	@Test
 	public void testInitGamePlayers() {
-		String goodInput = "a\n9\n8\n20\n";
+		String goodInput = "a\n9\n8\n20\nn\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -128,7 +128,27 @@ public class GameTest{
 
 	@Test
 	public void testInitGameMapSize() {
-		String goodInput = "8\nxyz\n50\n";
+		String goodInput = "8\nxyz\n50\nn\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameCollabMode() {
+		String goodInput = "8\n10\nawtf\nbxz\ny\n3\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameNumTeams() {
+		String goodInput = "8\n10\ny\n123\n3\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -299,4 +319,45 @@ public class GameTest{
 		// if no exception is thrown, all good
 	}
 
+	@Test
+	public void testSetCollabMode(){
+		assertTrue(game.setCollabMode("y"));
+	}
+
+	@Test
+	public void testSetCollabModeInvalid(){
+		assertFalse(game.setCollabMode("a"));
+	}
+
+	@Test
+	public void testSetNumTeams(){
+		game.setNumPlayers(4);
+		assertTrue(game.setNumberOfTeams(2));
+	}
+
+	@Test
+	public void testSetNumTeamsLimit(){
+		game.setNumPlayers(2);
+		assertTrue(game.setNumberOfTeams(2));
+	}
+
+	@Test
+	public void testSetNumTeamsInvalid(){
+		game.setNumPlayers(2);
+		assertFalse(game.setNumberOfTeams(3));
+	}
+
+	@Test
+	public void testSetNumTeamsInvalid2(){
+		game.setNumPlayers(2);
+		assertFalse(game.setNumberOfTeams(1));
+	}
+
+	@Test
+	public void testSetStartingPositionsCollab(){
+		game.setNumPlayers(4);
+		game.setMapSize(10);
+		game.setCollabMode("y");
+		game.setNumberOfTeams(2);
+	}
 }
