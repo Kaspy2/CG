@@ -2,9 +2,9 @@ package game;
 
 import java.util.ArrayList;
 
-class Player{
+public class Player{
     private Coordinate startCoord;
-    private ArrayList<Coordinate> visited;
+    protected ArrayList<Coordinate> visited;
     private Coordinate coordinate;
 
     public Player(Coordinate coord) {
@@ -48,7 +48,6 @@ class Player{
 
         Coordinate newpos = new Coordinate(x,y);
         this.setCoordinate(newpos);
-        visited.add(newpos);
         return true;
     }
 

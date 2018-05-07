@@ -49,6 +49,7 @@ public class GameTest{
 
 	@Test
 	public void testSetNumPlayersMax(){
+		game.setCollabMode("n");
 		assertFalse(game.setNumPlayers(9));
 	}
 
@@ -108,7 +109,9 @@ public class GameTest{
 
 	@Test
 	public void testInitGame() {
-		String goodInput = "2\n20\n";
+		// collab mode, num players, num teams, map size, map type
+		// collab mode, num players, map size, map type
+		String goodInput = "n\n2\n20\ns\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -118,7 +121,8 @@ public class GameTest{
 
 	@Test
 	public void testInitGamePlayers() {
-		String goodInput = "a\n9\n8\n20\n";
+		// collab mode, num players, map size, map type
+		String goodInput = "n\na\n9\n8\n20\na\ns\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -128,7 +132,8 @@ public class GameTest{
 
 	@Test
 	public void testInitGameMapSize() {
-		String goodInput = "8\nxyz\n50\n";
+		// collab mode, num players, map size, map type
+		String goodInput = "n\n8\nxyz\n50\nh\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -136,30 +141,49 @@ public class GameTest{
 		assertEquals(0,bais.available());
 	}
 
-	// @Test
-	// public void testInitGame(){
-	// 	ByteArrayOutputStream out = new ByteArrayOutputStream();
-	// 	ByteArrayInputStream in1 = new ByteArrayInputStream("a".getBytes());
-	//
-	// 	System.setIn(new ByteArrayInputStream("a".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("Number of players: ", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("1".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("ERROR: incorrect number of players. (MIN: 2 | MAX: 8)", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("2".getBytes()));
-	// 	System.setOut(new PrintStream(out));
-	// 	assertEquals("Map size: ", out);
-	//
-	// 	System.setIn(new ByteArrayInputStream("10".getBytes()));
-	//
-	// 	game.initGame();
-	//
-	// 	System.setOut(System.out);
-	// 	System.setIn(System.in);
-	// }
+	@Test
+	public void testInitGameCollabMode() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "awtf\nbxz\ny\n8\n3\n10\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameCollabModeEmpty() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "\n\r\ny\n8\n3\n10\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameNumTeams() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "y\n8\n123\n3\n10\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameCollabModeNumPlayers() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "y\n20\n3\n8\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
 
 	@Test
 	public void testGenHTMLNull(){
@@ -299,4 +323,45 @@ public class GameTest{
 		// if no exception is thrown, all good
 	}
 
+	@Test
+	public void testSetCollabMode(){
+		assertTrue(game.setCollabMode("y"));
+	}
+
+	@Test
+	public void testSetCollabModeInvalid(){
+		assertFalse(game.setCollabMode("a"));
+	}
+
+	@Test
+	public void testSetNumTeams(){
+		game.setNumPlayers(4);
+		assertTrue(game.setNumberOfTeams(2));
+	}
+
+	@Test
+	public void testSetNumTeamsLimit(){
+		game.setNumPlayers(2);
+		assertTrue(game.setNumberOfTeams(2));
+	}
+
+	@Test
+	public void testSetNumTeamsInvalid(){
+		game.setNumPlayers(2);
+		assertFalse(game.setNumberOfTeams(3));
+	}
+
+	@Test
+	public void testSetNumTeamsInvalid2(){
+		game.setNumPlayers(2);
+		assertFalse(game.setNumberOfTeams(1));
+	}
+
+	@Test
+	public void testSetStartingPositionsCollab(){
+		game.setNumPlayers(4);
+		game.setMapSize(10);
+		game.setCollabMode("y");
+		game.setNumberOfTeams(2);
+	}
 }
