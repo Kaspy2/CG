@@ -49,6 +49,7 @@ public class GameTest{
 
 	@Test
 	public void testSetNumPlayersMax(){
+		game.setCollabMode("n");
 		assertFalse(game.setNumPlayers(9));
 	}
 
@@ -108,7 +109,9 @@ public class GameTest{
 
 	@Test
 	public void testInitGame() {
-		String goodInput = "2\n20\ns\nn\n";
+		// collab mode, num players, num teams, map size, map type
+		// collab mode, num players, map size, map type
+		String goodInput = "n\n2\n20\ns\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -118,7 +121,8 @@ public class GameTest{
 
 	@Test
 	public void testInitGamePlayers() {
-		String goodInput = "a\n9\n8\n20\na\ns\nn\n";
+		// collab mode, num players, map size, map type
+		String goodInput = "n\na\n9\n8\n20\na\ns\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -128,7 +132,8 @@ public class GameTest{
 
 	@Test
 	public void testInitGameMapSize() {
-		String goodInput = "8\nxyz\n50\nh\nn\n";
+		// collab mode, num players, map size, map type
+		String goodInput = "n\n8\nxyz\n50\nh\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -138,7 +143,19 @@ public class GameTest{
 
 	@Test
 	public void testInitGameCollabMode() {
-		String goodInput = "8\n10\nh\nawtf\nbxz\ny\n3\n";
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "awtf\nbxz\ny\n8\n3\n10\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameCollabModeEmpty() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "\n\r\ny\n8\n3\n10\nh\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();
@@ -148,7 +165,19 @@ public class GameTest{
 
 	@Test
 	public void testInitGameNumTeams() {
-		String goodInput = "8\n10\nh\ny\n123\n3\n";
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "y\n8\n123\n3\n10\nh\n";
+		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
+		System.setIn(bais);
+		game.initGame();
+		System.setIn(System.in);
+		assertEquals(0,bais.available());
+	}
+
+	@Test
+	public void testInitGameCollabModeNumPlayers() {
+		// collab mode, num players, num teams, map size, map type
+		String goodInput = "y\n20\n3\n8\nh\n";
 		ByteArrayInputStream bais = new ByteArrayInputStream(goodInput.getBytes());
 		System.setIn(bais);
 		game.initGame();

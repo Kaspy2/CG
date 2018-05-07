@@ -74,6 +74,15 @@ public class Game{
 
     public static void initGame(){
         Scanner sc = new Scanner(System.in);
+        // teams
+        do{
+            System.out.print("Collaborative mode (y/n): ");
+            while(!sc.hasNext()){
+                System.out.print("Collaborative mode (y/n): ");
+                sc.next();
+            }
+        } while(!setCollabMode(sc.next()));
+
         do{
             System.out.print("Number of players: ");
             while (!sc.hasNextInt()){
@@ -82,6 +91,19 @@ public class Game{
             }
         } while(!setNumPlayers(sc.nextInt()));
 
+        if(collabMode == true){
+            // set number of teams
+            do{
+                System.out.print("Number of teams: ");
+                while (!sc.hasNextInt()){
+                    System.out.print("Number of teams: ");
+                    sc.next();
+                }
+            } while(!setNumberOfTeams(sc.nextInt()));
+        }
+        else{
+            teams = new Team[0];
+        }
 
         do{
             System.out.print("Map size: ");
@@ -98,34 +120,18 @@ public class Game{
         }
         map_type = sc.next().charAt(0);
 
-        // teams
-        do{
-            System.out.print("Collaborative mode (y/n): ");
-            while(!sc.hasNext()){
-                System.out.print("Collaborative mode (y/n): ");
-                sc.next();
-            }
-        } while(!setCollabMode(sc.next()));
-
-        if(collabMode == true){
-            // set number of teams
-            do{
-                System.out.print("Number of teams: ");
-                while (!sc.hasNextInt()){
-                    System.out.print("Number of teams: ");
-                    sc.next();
-                }
-            } while(!setNumberOfTeams(sc.nextInt()));
-        }
-        else{
-            teams = new Team[0];
-        }
+        
     }
 
     public static boolean setNumPlayers(int n_p){
         if(n_p >= 2 && n_p <= 8){
             num_players = n_p;
 			players = new Player[n_p];
+            return true;
+        }
+        else if (collabMode && n_p>1) { // if in collab mode can set any number of players 
+            num_players = n_p;
+            players = new Player[n_p];
             return true;
         }
         System.out.println("ERROR: incorrect number of players. (MIN: 2 | MAX: 8)");
@@ -139,8 +145,12 @@ public class Game{
         } else if (num_players >= 5 && num_players <= 8 && size >= 8 && size <= 50){
             map_size = size;
             return true;
+        } else if (collabMode && num_players>8 && size>=8 && size <= 50) {   // same map rules apply for collab mode
+            map_size = size;
+            return true;
         }
-        System.out.println("ERROR: incorrect map size. (MIN (2-4 players): 5x5 | MIN (5-8 players): 8x8 | MAX: 50x50)");
+
+        System.out.println("ERROR: incorrect map size. (MIN (2-4 players): 5x5 | MIN (5+ players): 8x8 | MAX: 50x50)");
         return false;
     }
 
