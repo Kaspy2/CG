@@ -17,7 +17,7 @@ public class Game{
     private static boolean collabMode;
 
     public static void main (String[] args){
-        System.out.println("The Grass / Water / Treasure Game v. 1.0.0 - A Game by CG Devs");
+        System.out.println("The Maze v. 2.0.0 - A Game by CG Devs");
         Scanner sc = new Scanner(System.in);
 
         initGame();
