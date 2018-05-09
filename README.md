@@ -24,11 +24,7 @@ $ java -classpath ../ game.Game
 ```
 
 For testing, this project uses maven which is set up in the root directory.
-For testing use:
-```sh
-$ mvn test
-```
-from `CG/`.
+For testing use `$ mvn test` from `CG/`.
 
 *Note: HTML files are generated in the `htmlouts/` directory, which comes equipped with `player.png` and `styles.css` (resources required for proper viewing of the generated HTML files).*
 
